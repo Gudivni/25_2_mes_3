@@ -26,6 +26,7 @@ async def quiz_2(call: types.CallbackQuery):
         open_period=30,
     )
 
+
 async def quiz_3(call: types.CallbackQuery):
     question = "Лучший футболист в истории?"
     answers = [
@@ -42,6 +43,8 @@ async def quiz_3(call: types.CallbackQuery):
         is_anonymous=False,
         open_period=30,
     )
+
+
 async def photo_mem2(call: types.CallbackQuery):
     photo2 = open("media/mem.png", 'rb')
     await bot.send_photo(call.from_user.id, photo=photo2)

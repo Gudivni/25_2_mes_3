@@ -66,6 +66,8 @@ async def load_group(message: types.Message, state: FSMContext):
 
 async def submit(message: types.Message, state: FSMContext):
     if message.text.lower() == "да":
+        async with state.proxy() as data:
+            data['data'] = message.date
         await sql_command_insert(state)
         await state.finish()
     elif message.text.lower() == "заново":

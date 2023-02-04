@@ -11,8 +11,10 @@ def sql_create():
 
     db.execute("CREATE TABLE IF NOT EXISTS mentors "
                "(ID INTEGER PRIMARY KEY, name TEXT,"
-               "direction TEXT, ega INTEGER, groupp TEXT)")
+               "direction TEXT, ega INTEGER, groupp TEXT,"
+               "datas INTEGER)")
     db.commit()
+
 
 async def sql_command_insert(state):
     async with state.proxy() as data:
@@ -37,4 +39,14 @@ async def sql_command_find_id_mentors(user_id):
 async def sql_command_find_name_mentors(user_id):
     return cursor.execute("SELECT * FROM mentors WHERE name = ?", (user_id,)).fetchall()
 
-sql_create()
+
+async def sql_command_find_direction_mentors(user_id):
+    return cursor.execute("SELECT * FROM mentors WHERE direction = ?", (user_id,)).fetchall()
+
+
+async def sql_command_find_age_mentors(user_id):
+    return cursor.execute("SELECT * FROM mentors WHERE ega = ?", (user_id,)).fetchall()
+
+
+async def sql_command_find_group_mentors(user_id):
+    return cursor.execute("SELECT * FROM mentors WHERE groupp = ?", (user_id,)).fetchall()
